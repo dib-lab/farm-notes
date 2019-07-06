@@ -58,6 +58,16 @@ conda activate somename
 
 Now installs will go into this separate conda environment.
 
+Note that you can do pip installs into a specific conda environment as well,
+e.g.
+
+```
+conda activate somename
+pip install Cython
+```
+
+will install the python package Cython into the conda environment `somename`.
+
 ## Running software via the slurm queuing system
 
 Briefly, to run big/long-running jobs, you'll need to:
