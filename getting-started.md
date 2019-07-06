@@ -20,7 +20,7 @@ if you have used a non-default private key, use `-i <path to private key>`.
 
 We recommend managing most of your software installs via conda and bioconda.
 
-Follow instructions [here](https://docs.conda.io/en/latest/miniconda.html),
+Following instructions [here](https://docs.conda.io/en/latest/miniconda.html),
 do:
 
 ```
@@ -28,6 +28,8 @@ curl -LO https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 bash Miniconda3-latest-Linux-x86_64.sh
 ```
 and then answer yes to all the questions!
+
+Log out and log back in again to activate the base conda environment.
 
 Then set up bioconda ([see docs for more info](https://bioconda.github.io/user/install.html#set-up-channels)):
 
@@ -39,7 +41,7 @@ conda config --add channels conda-forge
 
 Now you can use `conda install -y <packagename>` to install stuff.
 
-There's a [nice conda tutorial](https://kaust-vislab.github.io/introduction-to-conda-for-data-scientists/) for data scientists.
+There's a [nice conda tutorial](https://kaust-vislab.github.io/introduction-to-conda-for-data-scientists/) for data scientists available!
 
 ## Conda environments
 

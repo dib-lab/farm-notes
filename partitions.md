@@ -6,7 +6,9 @@ of these on farm seems to be switching between small and big mem.
 You specify partitions with `-p`, so e.g.
 
 ```
-#SBATCH -p bml                                                                 ```
+#SBATCH -p bml                                                                 
+```
+
 at the top of your sbatch script will specify the bml partition (big
 memory, low priority).
 
