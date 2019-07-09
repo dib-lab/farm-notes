@@ -16,6 +16,14 @@ ssh <ucdavis id>@farm.cse.ucdavis.edu
 
 if you have used a non-default private key, use `-i <path to private key>`.
 
+## Interactively logging in
+
+To request compute node resources to avoid running on the head node, use `srun`. This will request 20 GB RAM for 24 hours on high priority:
+```
+srun -p high -t 24:00:00 --mem=20000 --pty bash
+```
+
+
 ## Installing conda
 
 We recommend managing most of your software installs via conda and bioconda.
