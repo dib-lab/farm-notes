@@ -6,6 +6,9 @@
 
 [Example scripts](example-scripts.md)
 
+The appropriate help mailing list is help@cse.ucdavis.edu - the list
+admins@cse.ucdavis.edu is for things that you don't want followed up on.
+
 ## Other references
 
 New farm docs: [www.hpc.ucdavis.edu/posts/about_farm/](https://www.hpc.ucdavis.edu/posts/about_farm/)

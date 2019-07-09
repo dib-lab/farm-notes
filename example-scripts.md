@@ -74,3 +74,26 @@ set -x
 # Print out values of the current jobs SLURM environment variables
 env | grep SLURM
 ```
+
+## E-mail notifications
+
+You can get e-mail notifications of start, finish, etc. like so:
+
+```
+#! /bin/bash -login
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=titus@idyll.org
+#SBATCH -p bml
+#SBATCH -J sgc
+#SBATCH -t 3-0:00:00
+#SBATCH -N 1
+#SBATCH -n 1
+#SBATCH -c 4
+#SBATCH --mem=30gb
+```
+
+The mail-type arguments can be one of NONE, BEGIN, END, FAIL, REQUEUE, ALL,
+TIME_LIMIT, TIME_LIMIT_90 (reached 90 percent of time limit), TIME_LIMIT_80
+(reached 80 percent of time limit), TIME_LIMIT_50 (reached 50 percent of time
+limit) and ARRAY_TASKS.  You can put multiple mail-types in a comma-separated
+list.
