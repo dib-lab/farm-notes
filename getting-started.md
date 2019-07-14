@@ -37,7 +37,11 @@ bash Miniconda3-latest-Linux-x86_64.sh
 ```
 and then answer yes to all the questions!
 
-Log out and log back in again to activate the base conda environment.
+Log out and log back in again to activate the base conda environment. If this does not work, run:
+
+```
+source ~/.bashrc
+```
 
 Then set up bioconda ([see docs for more info](https://bioconda.github.io/user/install.html#set-up-channels)):
 
