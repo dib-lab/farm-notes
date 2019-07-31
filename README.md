@@ -17,3 +17,10 @@ CSE wiki: [wiki.cse.ucdavis.edu/support/systems/farm](https://wiki.cse.ucdavis.e
 
 Whitehead lab wiki: [wiki/Using-the-farm-cluster](https://github.com/WhiteheadLab/Lab_Wiki/wiki/Using-the-farm-cluster)
 
+## Quick tips
+
+Copy files onto farm using port 2022:
+
+```
+scp -P 2022 here_file account@farm.cse.ucdavis.edu:there_file
+```
