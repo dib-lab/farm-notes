@@ -17,6 +17,8 @@ CSE wiki: [wiki.cse.ucdavis.edu/support/systems/farm](https://wiki.cse.ucdavis.e
 
 Whitehead lab wiki: [wiki/Using-the-farm-cluster](https://github.com/WhiteheadLab/Lab_Wiki/wiki/Using-the-farm-cluster)
 
+Convenient SLURM commands (Harvard): [https://www.rc.fas.harvard.edu/resources/documentation/convenient-slurm-commands/](https://www.rc.fas.harvard.edu/resources/documentation/convenient-slurm-commands/)
+
 ## Quick tips
 
 Copy files onto farm using port 2022:
