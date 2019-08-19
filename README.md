@@ -26,3 +26,5 @@ Copy files onto farm using port 2022:
 ```
 scp -P 2022 here_file account@farm.cse.ucdavis.edu:there_file
 ```
+
+You can also [use GLOBUS](https://wiki.cse.ucdavis.edu/tier3/globus) - see [globus docs](https://www.globus.org/data-transfer)
