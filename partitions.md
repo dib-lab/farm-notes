@@ -22,3 +22,12 @@ We have access to:
 * bmh - high priority big mem
 
 as well as some default queue/partition that I don't yet understand :)
+
+## Priorities and queues
+
+Per Bill Broadley, here is how things work:
+
+> bmh = get what you paid for within 1 minute.
+> bmm = get more than you paid for, if there's any free resources (which is usually), but your job
+> might be suspended if another user asks for nodes in bmh.
+> bml = get more than you paid for (just like bmm) but your job might be killed and rescheduled.
