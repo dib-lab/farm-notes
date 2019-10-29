@@ -31,3 +31,10 @@ Per Bill Broadley, here is how things work:
 > bmm = get more than you paid for, if there's any free resources (which is usually), but your job
 > might be suspended if another user asks for nodes in bmh.
 > bml = get more than you paid for (just like bmm) but your job might be killed and rescheduled.
+
+## Allocation Limits
+
+Our group allocation has limits. As of 10/29/2019, they are:
+
+  - 1TB of memory
+  - 96 CPU

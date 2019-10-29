@@ -6,6 +6,8 @@
 
 [Example scripts](example-scripts.md)
 
+[Using Snakemake](snakemake-slurm.md)
+
 [Magic commands and informative links](magic-commands.md)
 
 The appropriate help mailing list is help@cse.ucdavis.edu - the list
