@@ -6,6 +6,10 @@
 
 [Example scripts](example-scripts.md)
 
+[More advanced usage](advanced-usage.md)- includes:
+
+* using local temp directory on nodes
+
 [Using Snakemake](snakemake-slurm.md)
 
 [Magic commands and informative links](magic-commands.md)
