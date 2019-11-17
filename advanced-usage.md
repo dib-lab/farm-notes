@@ -18,7 +18,7 @@ export MYTMP=/scratch/$USER/$SLURM_JOBID
 mkdir -p $MYTMP
 cd $MYTMP
 
-# <run your code, telling it to use that dir;
+# run your code, telling it to use that dir:
 echo running in $(pwd)
 
 echo to copy results out, you could do
