@@ -14,8 +14,15 @@ You can do this by making a USER and JOBID specific temp directory.
 The suggested incantations are:
 
 ```
-export MYTMP=/scratch/$USER/$SLURM_JOBID
+# make a directory specific to user and job
+export MYTMP=/scratch/${USER}/slurm_${SLURM_JOBID}
 mkdir -p $MYTMP
+
+# force clean it up after job script ends
+function cleanup() { rm -rf $MYTMP; }
+trap cleanup EXIT
+
+# change to it!
 cd $MYTMP
 
 # run your code, telling it to use that dir:
