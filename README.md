@@ -37,3 +37,11 @@ scp -P 2022 here_file account@farm.cse.ucdavis.edu:there_file
 ```
 
 You can also [use GLOBUS](https://wiki.cse.ucdavis.edu/tier3/globus) - see [globus docs](https://www.globus.org/data-transfer)
+
+## Getting an account
+
+If you have a UC Davis account, you can apply to get a farm account here:
+
+[wiki.cse.ucdavis.edu/cgi-bin/index2.pl](https://wiki.cse.ucdavis.edu/cgi-bin/index2.pl)
+
+Select "Farm/CAES", and "Brown."
