@@ -9,6 +9,7 @@
 [More advanced usage](advanced-usage.md)- includes:
 
 * using local temp directory on nodes
+* nodes, tasks, and cpus-per-task
 
 [Using Snakemake](snakemake-slurm.md)
 

@@ -27,3 +27,43 @@ echo cp $MYTMP/files_you_want_to_keep $SLURM_SUBMIT_DIR
 
 A fully functioning example is available in
 `/home/ctbrown/job-scripts/use-local-temp-space.sh`
+
+## nodes, tasks, and cpus-per-task
+
+At the top of your batch script, you can specify the number of nodes
+(`-N / --nodes`), the number of tasks (`-n / --ntasks`), and the
+number of CPUs per task (`-c/--cpus-per-task`) (see
+[sbatch documentation](https://slurm.schedmd.com/sbatch.html) for
+confusing details). Set them like so:
+
+```
+#SBATCH -N 1
+#SBATCH -n 1
+#SBATCH -c 1
+```
+
+The wisdom of the ages is thus:
+
+In general, a lot of what us bioinformaticians run is NOT cluster-aware,
+so unless you have other information that something is slurm- or cluster-
+adapted, you probably want to use `-N 1 -n 1` and only adjust `-c`.
+
+For example, if I am running snakemake on a single node and want it to
+be able to run 32 jobs at the same time, I would set `-c 32` in the slurm
+sbatch script, and tell snakemake to use `-j 32`. Similar logic applies
+to any multithreaded application that is not cluster aware: `-c` corresponds
+to number of threads to use.
+
+Thus spake @luizirber:
+> --ntasks makes sense for MPI (or things that are closely tied when
+>  running), which shouldn't be the case for us.
+
+Here is an additional comment from the `--cpus-per-task` documentation:
+
+>For instance, consider an application that has 4 tasks, each
+>requiring 3 processors. If our cluster is comprised of quad-processors
+>nodes and we simply ask for 12 processors, the controller might give
+>us only 3 nodes. However, by using the --cpus-per-task=3 options, the
+>controller knows that each task requires 3 processors on the same
+>node, and the controller will grant an allocation of 4 nodes, one for
+>each of the 4 tasks.
