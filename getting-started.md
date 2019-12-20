@@ -139,3 +139,6 @@ CPU count per node can not be satisfied` or `sbatch: error: Batch job
 submission failed: Requested node configuration is not available` then
 you probably need to use a different partition; see
 [Partitions/queues we have available](partitions.md).
+
+## Shared storage
+For files shared among users (references, databases, etc), use /group/ctbrowngrp/ to avoid having redundant files.
