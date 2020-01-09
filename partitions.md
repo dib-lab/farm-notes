@@ -38,3 +38,14 @@ Our group allocation has limits. As of 10/29/2019, they are:
 
   - 1TB of memory
   - 96 CPU
+  
+## Node types:
+
+`ctbrowngrp` should have one parallel node, and one bigmem node.
+
+The node types are:
+* parallel nodes = $8-$9k each, bought in groups of 4, each with 64 CPUs, 256GB
+ram, and 2TB of /scratch
+
+* bigmem nodes = $17k-$19k each, each with 96 CPUs, 1TB ram, and 2TB of /scratch
+
