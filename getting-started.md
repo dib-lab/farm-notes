@@ -78,6 +78,29 @@ pip install Cython
 
 will install the python package Cython into the conda environment `somename`.
 
+## Running Rstudio interactively
+First you need to install Rstudio using conda
+```
+conda create -n rstudio rstudio
+```
+
+Now log in to farm through ssh with X11 forwarding:
+```
+ssh -X username@farm.cse.ucdavis.edu
+```
+
+Start an interactive job:
+```
+srun -t 240 --mem=10g -p bmh --pty bash
+```
+
+Activate conda env for Rstudio and launch an instance
+```
+conda activate rstudio
+rstudio
+```
+An Rstudio interface now should appear on your desktop.
+
 ## Running software via the slurm queuing system
 
 Briefly, to run big/long-running jobs, you'll need to:
