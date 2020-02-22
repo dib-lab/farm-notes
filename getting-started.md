@@ -79,15 +79,18 @@ pip install Cython
 will install the python package Cython into the conda environment `somename`.
 
 ## Running Rstudio interactively
+
 First you need to install Rstudio using conda
 ```
 conda create -n rstudio rstudio
 ```
 
-Now log in to farm through ssh with X11 forwarding:
+Now log in to farm through ssh with X11 forwarding; from Mac OS X or Linux,
 ```
 ssh -X username@farm.cse.ucdavis.edu
 ```
+(If you use [Mobaxterm](https://mobaxterm.mobatek.net/) on Windows, you can also get X11 forwarding and display
+to work; please let us know if you need help doing this!)
 
 Start an interactive job:
 ```
