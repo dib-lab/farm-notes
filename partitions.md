@@ -22,3 +22,30 @@ We have access to:
 * bmh - high priority big mem
 
 as well as some default queue/partition that I don't yet understand :)
+
+## Priorities and queues
+
+Per Bill Broadley, here is how things work:
+
+> bmh = get what you paid for within 1 minute.
+> bmm = get more than you paid for, if there's any free resources (which is usually), but your job
+> might be suspended if another user asks for nodes in bmh.
+> bml = get more than you paid for (just like bmm) but your job might be killed and rescheduled.
+
+## Allocation Limits
+
+Our group allocation has limits. As of 10/29/2019, they are:
+
+  - 1TB of memory
+  - 96 CPU
+  
+## Node types:
+
+`ctbrowngrp` should have one parallel node, and one bigmem node.
+
+The node types are:
+* parallel nodes = $8-$9k each, bought in groups of 4, each with 64 CPUs, 256GB
+ram, and 2TB of /scratch
+
+* bigmem nodes = $17k-$19k each, each with 96 CPUs, 1TB ram, and 2TB of /scratch
+
