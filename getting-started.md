@@ -22,16 +22,19 @@ To request compute node resources to avoid running on the head node, use `srun`.
 ```
 srun -p high -t 24:00:00 --mem=20000 --pty bash
 ```
-
+(We strongly suggest _against_ doing this regularly, and instead suggest using `sbatch` to submit scripts that run your analysis; see "Running software via the slurm queuing system" below, for more on the suggested approach.)
 
 ## Installing conda
 
-We recommend managing most of your software installs via conda and bioconda.
+We recommend managing most of your software installs via conda and bioconda. Please see [this tutorial on conda](https://github.com/ngs-docs/2020-GGG298/tree/master/Week3-conda_for_software_installation) if interested in more details.
+
+To install conda, read on!
 
 Following instructions [here](https://docs.conda.io/en/latest/miniconda.html),
 do:
 
 ```
+echo source ~/.bashrc >> ~/.bash_profile
 curl -LO https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 bash Miniconda3-latest-Linux-x86_64.sh
 ```
