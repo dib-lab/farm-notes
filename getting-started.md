@@ -168,3 +168,16 @@ you probably need to use a different partition; see
 
 ## Shared storage
 For files shared among users (references, databases, etc), use /group/ctbrowngrp/ to avoid having redundant files.
+
+## Using shared resources
+
+Users in `ctbrowngrp` collectively share resources. 
+Currently, this group has priority access to 1 TB of ram and 96 CPUs.
+These resources are accessed using the big mem partition, `bm*`.
+As of February 2020, there are 31 researches who share these resources.
+To manage and share these resources equitably, we have created a set of rules for resource usage. 
+When submitting jobs, if you submit to a `bm*` partition, please follow these rules:
+
++ `bmh`: use for 1. small-ish interactive testing 2. single-core snakemake jobs that submit other jobs. 3. only if really needed: one job that uses a reasonable amount of resources of “things that I really need to not get bumped.” Things that fall into group 3 might be very long running jobs that would otherwise always be interupted on `bmm` or `bml` (e.g. > 5 days), or single jobs that need to be completed in time for a grant or presentation. If your single job on `bmh` will exceed 1/3 of the groups resources for either RAM or CPU, please notify the group prior to submitting this job. 
++ `bmm`: don’t submit more than 1/3 of resources at once. This counts for cpu (96 total, so max 32) and ram (1TB total, so max 333 GB).
++ `bml`: free for all! Go hog wild! Submit to your hearts content!
