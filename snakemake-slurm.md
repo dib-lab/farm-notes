@@ -30,6 +30,8 @@ __default__:
 
 Even if you tell snakemake where to find this file, it's not going to use all of these parameters to submit each job - it will only use the onse you specify in the `sbatch` portion of your `--cluster` statement.
 
+`ACCOUNT` should correspond to the buyin user; for DIB members, this will be `ctbrowngrp`. The partitions are described [here](https://github.com/dib-lab/farm-notes/blob/master/partitions.md).
+
 To submit with identical parameters as we used above, run snakemake like so:
 
 ```
