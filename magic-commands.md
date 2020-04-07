@@ -1,5 +1,9 @@
 # Magic commands and links
 
+## listing members of the group
+
+`cat /etc/group | grep ctbrowngrp`
+
 ## getting job listings for the group:
 
 `squeue -A ctbrowngrp`
