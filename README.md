@@ -2,6 +2,8 @@
 
 [Getting Started](getting-started.md) - accounts & installing conda/bioconda, etc.
 
+[Integrate your github username & password](integrate_github.md)
+
 [Partitions/queues we have access to](partitions.md)
 
 [Example scripts](example-scripts.md)
