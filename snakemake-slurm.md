@@ -20,15 +20,16 @@ Here's an example cluster configuration file:
 __default__:
     account: ctbrowngrp
     partition: bml
-    time: 00:05:00 # time limit for each job (5 min)
+    time: 1-00:05:00 # time limit per job (1 day, 5 min; fmt = dd-hh:mm:ss)
     nodes: 1 # per job
     ntasks-per-node: 1 # per job
-    chdir: /home/ctbrown/charcoal
+    chdir: /home/ctbrown/charcoal  # working directory for batch script
     output: slurm-%j.out
     error: slurm-%j.err
 ```
 
-snakemake will use the values in this file to fill in the parameters for job submission. 
+snakemake will use the values in this file to fill in the parameters for job submission (see below command line, where `cluster.time` will be filled in as
+`1-00:05:00` from the above config file).
 
 Even if you tell snakemake where to find this file, it's not going to use all of these parameters to submit each job - it will only use the ones you specify in the `sbatch` portion of your `--cluster` statement.
 
