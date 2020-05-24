@@ -28,7 +28,7 @@ __default__:
     error: slurm-%j.err
 ```
 
-snakemake will use the values in this file to fill in the 
+snakemake will use the values in this file to fill in the parameters for job submission. 
 
 Even if you tell snakemake where to find this file, it's not going to use all of these parameters to submit each job - it will only use the ones you specify in the `sbatch` portion of your `--cluster` statement.
 
