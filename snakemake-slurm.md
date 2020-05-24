@@ -30,7 +30,7 @@ __default__:
 
 snakemake will use the values in this file to fill in the 
 
-Even if you tell snakemake where to find this file, it's not going to use all of these parameters to submit each job - it will only use the onse you specify in the `sbatch` portion of your `--cluster` statement.
+Even if you tell snakemake where to find this file, it's not going to use all of these parameters to submit each job - it will only use the ones you specify in the `sbatch` portion of your `--cluster` statement.
 
 Here, `ctbrowngrp` should correspond to the buyin account. The
 partitions (queues) are described
