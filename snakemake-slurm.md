@@ -122,3 +122,5 @@ identically by snakemake, but I find `yaml` to be more human-friendly!
 You can use either.
 
 Take a look at the snakemake documention for cluster execution [here](https://snakemake.readthedocs.io/en/stable/executable.html#cluster-execution).
+
+Tessa has written a nice blogpost about [using Snakemake Profiles](https://bluegenes.github.io/Using-Snakemake_Profiles/), too.
