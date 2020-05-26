@@ -18,37 +18,55 @@ Here's an example cluster configuration file:
 ```
 # cluster_config.yml - cluster configuration
 __default__:
-    account: ACCOUNT
-    partition: PARTITION
-    time: 01:00:00 # time limit for each job
-    nodes: 1
-    ntasks-per-node: 14 #Request n cores be allocated per node.
-    chdir: /directory/to/change/to
-    output: a_name_for_my_job-%j.out
-    error: a_name_for_my_job-%j.err
+    account: ctbrowngrp
+    partition: bml
+    time: 1-00:05:00 # time limit per job (1 day, 5 min; fmt = dd-hh:mm:ss)
+    nodes: 1 # per job
+    ntasks-per-node: 1 # per job
+    chdir: /home/ctbrown/charcoal  # working directory for batch script
+    output: slurm-%j.out
+    error: slurm-%j.err
 ```
 
-Even if you tell snakemake where to find this file, it's not going to use all of these parameters to submit each job - it will only use the onse you specify in the `sbatch` portion of your `--cluster` statement.
+snakemake will use the values in this file to fill in the parameters for job submission (see below command line, where `cluster.time` will be filled in as
+`1-00:05:00` from the above config file).
 
-`ACCOUNT` should correspond to the buyin user; for DIB members, this will be `ctbrowngrp`. The partitions are described [here](https://github.com/dib-lab/farm-notes/blob/master/partitions.md).
+Even if you tell snakemake where to find this file, it's not going to use all of these parameters to submit each job - it will only use the ones you specify in the `sbatch` portion of your `--cluster` statement.
 
-To submit with identical parameters as we used above, run snakemake like so:
+Here, `ctbrowngrp` should correspond to the buyin account. The
+partitions (queues) are described
+[here](https://github.com/dib-lab/farm-notes/blob/master/partitions.md).
+
+To run snakemake so that it submits jobs with parameters from the
+config file, run snakemake like so:
 
 ```
-snakemake --cluster "sbatch -A {cluster.account} -t {cluster.time} -p {cluster.partition} -N {cluster.nodes}" --cluster-config cluster_config.yml --jobs NUM_JOBS_TO_SUBMIT
+snakemake --cluster "sbatch -A {cluster.account} -t {cluster.time} \
+    -p {cluster.partition} -N {cluster.nodes}" \
+    --cluster-config cluster_config.yml --jobs 8
 ```
-The information within the `{}` are the parameters that snakemake will read from the `cluster_config.yml` file.
 
-In this configuration file above, I only have information for a `__default__`, which will be used as the default for each rule. If you want to set specific time limits for each rule (or some rules), you can add that info to the file. 
+The information within the `{}` are the parameters that snakemake will
+read from the `cluster_config.yml` file. Here we are telling snakemake to
+run up to 8 jobs simultaneously.
 
-For example, if I have a rule called `trimmomatic_raw`, I could add the following to my `cluster_config.yml` file to specify some different cluster parameters for that rule.
+In this configuration file above, I only have information for a
+`__default__`, which will be used as the default for each rule. If you
+want to set specific time limits for each rule (or some rules), you
+can add that info to the file.
+
+For example, if I have a rule called `trimmomatic_raw`, I could add
+the following to my `cluster_config.yml` file to specify some
+different cluster parameters for that rule.
 
 ```
 trimmomatic_raw:
    time: 00:45:00 # time limit for this rule only
 ```
 
-For non-slurm clusters, you can change the `cluster` command to reflect the scheduling service your cluster uses. See snakemake's documentation for examples.
+For non-slurm clusters, you can change the `cluster` command to
+reflect the scheduling service your cluster uses. See snakemake's
+documentation for examples.
 
 ## Examples
 
@@ -93,8 +111,16 @@ snakemake -s diamond_blast.snakefile --use-conda --cluster "sbatch -t 0:30:00 -N
 
 ## Additional Resources
 
-A simple fully functioning example for the farm cluster is [here](https://github.com/ctb/2019-snakemake-slurm).
+A simple fully functioning example for the farm cluster is
+[here](https://github.com/ctb/2019-snakemake-slurm).
 
-Here's a carpentries [tutorial](https://hpc-carpentry.github.io/hpc-python/17-cluster/) you might find helpful. Note that this tutorial has a `json`-formatted cluster configuration file. `json` and `yaml` files are read identically by snakemake, but I find `yaml` to be more human-friendly! You can use either.
+Here's a carpentries
+[tutorial](https://hpc-carpentry.github.io/hpc-python/17-cluster/) you
+might find helpful. Note that this tutorial has a `json`-formatted
+cluster configuration file. `json` and `yaml` files are read
+identically by snakemake, but I find `yaml` to be more human-friendly!
+You can use either.
 
-Take a look at the snakemake documention for cluster execution here: https://snakemake.readthedocs.io/en/stable/executable.html#cluster-execution
+Take a look at the snakemake documention for cluster execution [here](https://snakemake.readthedocs.io/en/stable/executable.html#cluster-execution).
+
+Tessa has written a nice blogpost about [using Snakemake Profiles](https://bluegenes.github.io/Using-Snakemake_Profiles/), too.
