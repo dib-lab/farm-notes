@@ -17,11 +17,15 @@ Without specifying a partition, I've been able to allocate 30 GB but not
 
 We have access to:
 
-* bml - low priority big mem (up to a TB)
-* bmm - medium priority big mem
-* bmh - high priority big mem
+* bml - low priority big mem node (up to a TB)
+* bmm - medium priority big mem node
+* bmh - high priority big mem node
 
-as well as some default queue/partition that I don't yet understand :)
+as well as
+
+* low2 - low priority compute nodes
+* med2 - medium priority compute nodes
+* high2 - high priority compute nodes
 
 ## Priorities and queues
 
@@ -34,18 +38,16 @@ Per Bill Broadley, here is how things work:
 
 ## Allocation Limits
 
-Our group allocation has limits. As of 10/29/2019, they are:
+Our group allocation has limits.
 
-  - 1TB of memory
-  - 96 CPU
-  
-## Node types:
+As of June 15, 2020, they are as follows.
 
-`ctbrowngrp` should have one parallel node, and one bigmem node.
+On bmh/bmm/bml, we have one bigmem node, so:
 
-The node types are:
-* parallel nodes = $8-$9k each, bought in groups of 4, each with 64 CPUs, 256GB
-ram, and 2TB of /scratch
+- 1TB of memory max
+- 96 CPU
 
-* bigmem nodes = $17k-$19k each, each with 96 CPUs, 1TB ram, and 2TB of /scratch
+On high2/med2/low2, we have two parallel nodes, so:
 
+- 512 GB RAM total, 256 GB max per job
+- 32 cores on one machine, 64 cores on the other machine

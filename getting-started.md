@@ -101,7 +101,7 @@ to work; please let us know if you need help doing this!)
 
 Start an interactive job:
 ```
-srun -t 240 --mem=10g -p bmh --pty bash
+srun -t 240 --mem=10g -p high2 --pty bash
 ```
 
 Activate conda env for Rstudio and launch an instance
@@ -119,6 +119,7 @@ Briefly, to run big/long-running jobs, you'll need to:
 * put slurm SBATCH commands at the top, like so:
 
 ```
+#SBATCH -p med2
 #SBATCH -J sgc
 #SBATCH -t 3-0:00:00
 #SBATCH -N 1
@@ -133,6 +134,7 @@ A script template I use regularly is something like this:
 
 ```
 #! /bin/bash -login
+#SBATCH -p med2
 #SBATCH -J sgc
 #SBATCH -t 3-0:00:00
 #SBATCH -N 1
@@ -179,12 +181,17 @@ For files shared among users (references, databases, etc), use /group/ctbrowngrp
 ## Using shared resources
 
 Users in `ctbrowngrp` collectively share resources. 
-Currently, this group has priority access to 1 TB of ram and 96 CPUs.
-These resources are accessed using the big mem partition, `bm*`.
+Currently, this group has priority access to 1 TB of ram and 96 CPUs on
+one machine, and 256 GB RAM and up to 64 CPUs on another two machines.
+The big mem machine is accessed using the big mem partition, `bm*`,
+while the smaller-memory machines are accessed on `high2`/`med2`/`low2`.
+
 As of February 2020, there are 31 researches who share these resources.
 To manage and share these resources equitably, we have created a set of rules for resource usage. 
 When submitting jobs, if you submit to a `bm*` partition, please follow these rules:
 
-+ `bmh`: use for 1. small-ish interactive testing 2. single-core snakemake jobs that submit other jobs. 3. only if really needed: one job that uses a reasonable amount of resources of “things that I really need to not get bumped.” Things that fall into group 3 might be very long running jobs that would otherwise always be interupted on `bmm` or `bml` (e.g. > 5 days), or single jobs that need to be completed in time for a grant or presentation. If your single job on `bmh` will exceed 1/3 of the groups resources for either RAM or CPU, please notify the group prior to submitting this job. 
-+ `bmm`: don’t submit more than 1/3 of resources at once. This counts for cpu (96 total, so max 32) and ram (1TB total, so max 333 GB).
-+ `bml`: free for all! Go hog wild! Submit to your hearts content!
++ `bmh`/`high2`: use for 1. small-ish interactive testing 2. single-core snakemake jobs that submit other jobs. 3. only if really needed: one job that uses a reasonable amount of resources of “things that I really need to not get bumped.” Things that fall into group 3 might be very long running jobs that would otherwise always be interupted on `bmm`/`med2` or `bml`/`low2` (e.g. > 5 days), or single jobs that need to be completed in time for a grant or presentation. If your single job on `bmh`/`high2` will exceed 1/3 of the groups resources for either RAM or CPU, please notify the group prior to submitting this job. 
++ `bmm`/`med2`: don’t submit more than 1/3 of resources at once. This counts for cpu (96 total, so max 32) and ram (1TB total, so max 333 GB).
++ `bml`/`low2`: free for all! Go hog wild! Submit to your hearts content!
+
+Note that the `bmm`/`bml` and `med2`/`low2` queues have access to the full cluster, not just our machines; so if farm is not being highly utilized you may be able to run *more* jobs _faster_ on those nodes than on `bmh`/`high2`.
