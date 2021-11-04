@@ -68,6 +68,48 @@ For non-slurm clusters, you can change the `cluster` command to
 reflect the scheduling service your cluster uses. See snakemake's
 documentation for examples.
 
+## Detecting edge cases
+In some cases when a slurm job is preempted (eg. by higher priority jobs), snakemake recognizes it as having failed and stop execution of all subsequent jobs. To gracefully handle such cases, snakemake allows a custom script to check job status via [`--cluster-status`](https://snakemake.readthedocs.io/en/stable/tutorial/additional_features.html#using-cluster-status). It accepts a python script that prints one of the three statuses: `success`, `running`, and `failed`. Below is an example script that works with Farm:
+
+```
+#!/usr/bin/python
+import sys, time, subprocess
+
+jobid = sys.argv[1]
+
+def check_state(output):
+    running_status=["PENDING", "CONFIGURING", "COMPLETING", "RUNNING", "SUSPENDED", "PREEMPTED"] # Tell snakemake to wait if job has one of these states
+    if "COMPLETED" in output:
+        print("success")
+    elif any(r in output for r in running_status):
+        print("running")
+    else:
+        print("failed")
+
+attempts = 5
+delay = 3 # wait time (s) between attempts
+
+for i in range(attempts):
+    try:
+        output = str(subprocess.check_output("sacct -j %s --format State --noheader | head -1 | awk '{print $1}'" % jobid, shell=True, universal_newlines = True).strip())
+        if output:
+            check_state(output)
+            exit(0)
+    except Exception as e: # sacct command sometimes seems to fail with communication errors or return null for first ~10s after a job submission, in that case, scontrol can be used
+        print("sacct error:" + e, file=sys.stderr)
+    try:
+        output = subprocess.run("scontrol show job -o " + str(jobid), capture_output = True, shell = True, universal_newlines = True)
+        if output.stdout:
+            info = {i.split('=')[0]: i.split('=')[1] for i in output.stdout.strip().split(' ')}
+            check_state(info['JobState'])
+            exit(0)
+    except Exception as e: # a jobid stays in scontrol for an unspecififed amount (possibly undeterministic) after completion, in that case, sacct is approriate
+        print(e, file=sys.stderr)
+    time.sleep(delay)
+if i >= attempts - 1:
+    print('failed')
+```
+
 ## Examples
 
 ### Example to run within tmux
