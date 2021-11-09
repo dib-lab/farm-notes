@@ -17,7 +17,7 @@
 
 [Magic commands and informative links](magic-commands.md)
 
-The appropriate help mailing list is help@cse.ucdavis.edu - the list
+The appropriate help mailing list is farm-hpc@ucdavis.edu - the list
 admins@cse.ucdavis.edu is for things that you don't want followed up on.
 
 ## Other references
