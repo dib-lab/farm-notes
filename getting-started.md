@@ -20,7 +20,7 @@ if you have used a non-default private key, use `-i <path to private key>`.
 
 To request compute node resources to avoid running on the head node, use `srun`. This will request 20 GB RAM for 24 hours on high priority:
 ```
-srun -p high -t 24:00:00 --mem=20000 --pty bash
+srun -p high2 -t 24:00:00 --mem=20000 --pty bash
 ```
 (We strongly suggest _against_ doing this regularly, and instead suggest using `sbatch` to submit scripts that run your analysis; see "Running software via the slurm queuing system" below, for more on the suggested approach.)
 
