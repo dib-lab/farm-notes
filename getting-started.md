@@ -176,7 +176,7 @@ you probably need to use a different partition; see
 [Partitions/queues we have available](partitions.md).
 
 ## Shared storage
-For files shared among users (references, databases, etc), use /group/ctbrowngrp/ to avoid having redundant files.
+For files shared among users (references, databases, etc), use `/group/ctbrowngrp/` to avoid having redundant files.
 
 ## Using shared resources
 
@@ -195,3 +195,11 @@ When submitting jobs, if you submit to a `bm*` partition, please follow these ru
 + `bml`/`low2`: free for all! Go hog wild! Submit to your hearts content!
 
 Note that the `bmm`/`bml` and `med2`/`low2` queues have access to the full cluster, not just our machines; so if farm is not being highly utilized you may be able to run *more* jobs _faster_ on those nodes than on `bmh`/`high2`.
+
+## Managing system modules
+
+- List all available modules: `module avail`
+- List currently loaded modules: `module list`
+- Loading a module: `module load <module_name>`
+  - Example loading GCC module: `module load gcc/9.2.0`
+- Unloading module: `module unload <module_name>`
