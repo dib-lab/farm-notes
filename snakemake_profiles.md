@@ -58,6 +58,15 @@ else:
   print("failed")
 ```
 
+**Run**
+
+```
+snakemake --profile slurm
+
+```
+
+
+
 <hr>
 
 _Thanks to https://fame.flinders.edu.au/blog/2021/08/02/snakemake-profiles-updated_
