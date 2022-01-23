@@ -1,6 +1,6 @@
 # Snakemake profiles
 
-While https://github.com/dib-lab/farm-notes/blob/latest/snakemake-slurm.md works greatly, Snakemake has deprectated the `--cluster-config` with `--profile`.
+While https://github.com/dib-lab/farm-notes/blob/latest/snakemake-slurm.md works greatly, Snakemake has deprectated the `--cluster-config` and replaced with `--profile`.
 
 Here's a simple example of setting this up globally on a user account.
 
