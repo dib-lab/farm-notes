@@ -14,6 +14,7 @@
 * nodes, tasks, and cpus-per-task
 
 [Using Snakemake](snakemake-slurm.md)
+[Using Snakemake profiles](snakemake_profiles.md)
 
 [Magic commands and informative links](magic-commands.md)
 
