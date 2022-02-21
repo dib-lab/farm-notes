@@ -16,6 +16,10 @@ ssh <ucdavis id>@farm.cse.ucdavis.edu
 
 if you have used a non-default private key, use `-i <path to private key>`.
 
+**Warning**: do _not_ run big analyses on the 'farm' head node itself - for that, you'll want to use srun or sbatch. See the next section.
+
+(If you do run big analyses on the farm head, you run the risk of getting temporarily banned, and no one wants that!)
+
 ## Interactively logging in
 
 To request compute node resources to avoid running on the head node, use `srun`. This will request 20 GB RAM for 24 hours on high priority:
