@@ -36,6 +36,49 @@ set -x
 env | grep SLURM
 ```
 
+## A stock sbatch script that includes activating a conda environment
+
+Here's the sbatch script I usually start with. It has a few nice
+features:
+
+* it lists the parameters that I usually end up modifying (`-c`, `-t`, `--mem`)
+* it supports conda environment activation
+* it prints out the resources I actually used at the end! (See [Measuring your resource usage](#Measuring-your-resource-usage) below)
+
+```
+#!/bin/bash -login
+#SBATCH -p med2                # use 'med2' partition for medium priority
+#SBATCH -J myjob               # name for job
+#SBATCH -c 1                   # 1 core
+#SBATCH -t 1:00:00             # ask for an hour, max
+#SBATCH --mem=2000             # memory (2000 mb = 2gb)
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=<email>@ucdavis.edu
+
+# initialize conda
+. ~/mambaforge/etc/profile.d/conda.sh
+
+# activate your desired conda environment
+conda activate base
+
+# fail on weird errors
+set -e
+set -x
+
+### YOUR COMMANDS GO HERE ###
+# for example,
+sleep 15
+### YOUR COMMANDS GO HERE ###
+
+# Print out values of the current jobs SLURM environment variables
+env | grep SLURM
+
+# Print out final statistics about resource use before job exits
+scontrol show job ${SLURM_JOB_ID}
+
+sstat --format 'JobID,MaxRSS,AveCPU' -P ${SLURM_JOB_ID}.batch
+```
+
 ## Example bigmem script
 
 Here we use the low priority bigmem partition (up to 1 TB RAM) with `-p bml`.
