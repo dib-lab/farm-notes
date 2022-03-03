@@ -26,7 +26,8 @@ cluster:
 default-resources:
   - mem_mb=2000
   - time=480
-  - partition=med2
+  - partition=low2
+  - threads=1
 jobs: 100
 latency-wait: 60
 local-cores: 8
@@ -61,11 +62,33 @@ else:
 **Run**
 
 ```
-snakemake --profile slurm
+snakemake -s <snakfile> --profile slurm
 
 ```
 
+### Create your own profile
 
+The example above is just a usage demo that you can modify. You can create a new parameter in the `sbatch` command as `{resources.new_parameter}` and then use the `new_parameter` in the resources section of a snakemake rule.
+
+**Example:**
+
+In `~/.config/snakemake/slurm/config.yaml` append the following parameter to the sbatch command, then use it in the snakemake rule `resources`.
+
+```yaml
+--nodes={resources.nodes}
+```
+
+```python
+rule test_rule:
+  threads: 64
+  resources:
+    - partition = 'med2' # med2 partition
+    - mem_mb = 350 * 1024 # 350GB
+    - time = 2 * 24 * 60 # two days
+    - nodes = 2 # Two nodes <- new parameter
+```
+
+Please note that `job name` = `rule name`, and all log files are written in `logs/job_name/job_id`. Multiple runs to the same rule will override the old log file. 
 
 <hr>
 
