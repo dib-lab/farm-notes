@@ -6,7 +6,8 @@
 
 ## getting job listings for the group:
 
-`squeue -A ctbrowngrp`
+`squeue -A ctbrowngrp`  
+`squeue -A ctbrowngrp | egrep -v 'bml|low2'` # jobs on med and high partition
 
 ## status web page
 
@@ -19,3 +20,11 @@ partitions=`scontrol show partition | grep PartitionName | cut -d '=' -f2 | sed 
 
 sinfo -Nle -p $partitions -o "%n '%C' %O %e %m %T" | tr ' ' '\t' | sed '1d' | expand -t 10
 ```
+
+## Remembering how to login
+
+`history | grep ssh`
+
+## Taylor's useful UNIX one liners
+
+[link](https://gist.github.com/taylorreiter/746bdb6dee2ceac04dffb8b593bcdbac)
