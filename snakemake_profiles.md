@@ -23,6 +23,7 @@ cluster:
     --output=logs/{rule}/{jobid}.out
     --error=logs/{rule}/{jobid}.err
     --partition={resources.partition}
+    --parsable
 default-resources:
   - mem_mb=2000
   - time=480
