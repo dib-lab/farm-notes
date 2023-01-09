@@ -2,10 +2,30 @@
 
 ## Getting an account
 
-Go to the [account request form](https://wiki.cse.ucdavis.edu/cgi-bin/index2.pl
-) and use 'Brown' as the supervisor.
+Go to the
+[account request form](https://wiki.cse.ucdavis.edu/cgi-bin/index2.pl
+) and select Farm/CAES as the cluster and use 'Brown' as the
+supervisor.
 
 You'll need an ssh public key to create an account.
+(If you already have a public key, there is no need to generate a new one!)
+
+To generate a public key for the first time, on Mac OS X and Linux run:
+
+```
+ssh-keygen
+```
+at the shell prompt, and hit the enter key.
+
+Then hit enter three times - once to confirm file name, twice to enter
+an empty password.
+
+Then, you should have a file in your home directory, under
+```
+.ssh/id_rsa.pub
+```
+
+That’s the public key file that you need to use submit to that form. 
 
 ## Logging in
 
