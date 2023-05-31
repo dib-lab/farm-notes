@@ -3,12 +3,13 @@
 ## Getting an account
 
 Go to the
-[account request form](https://wiki.cse.ucdavis.edu/cgi-bin/index2.pl
-) and select Farm/CAES as the cluster and use 'Brown' as the
-supervisor.
+[account request form](https://hippo.ucdavis.edu/Farm/create)
+and select VetMed as the sponsor.
 
-You'll need an ssh public key to create an account.
+You'll need an ssh public key to create an account. See below for instructions!
 (If you already have a public key, there is no need to generate a new one!)
+
+### Generating an SSH public key to paste into the farm.
 
 To generate a public key for the first time, on Mac OS X and Linux run:
 
@@ -25,7 +26,8 @@ Then, you should have a file in your home directory, under
 .ssh/id_rsa.pub
 ```
 
-That’s the public key file that you need to use submit to that form. 
+Now run `cat .ssh/id_rsa.pub` and copy/paste the resulting text into the
+form.
 
 ## Logging in
 
@@ -50,27 +52,23 @@ srun -p high2 -t 24:00:00 --mem=20000 --pty bash
 
 ## Installing conda
 
-We recommend managing most of your software installs via conda and bioconda. Please see [this tutorial on conda](https://github.com/ngs-docs/2020-GGG298/tree/master/Week3-conda_for_software_installation) if interested in more details.
+We recommend managing most of your software installs via conda and bioconda. Please see [this tutorial on conda](https://ngs-docs.github.io/2021-august-remote-computing/installing-software-on-remote-computers-with-conda.html) for a more complete introduction!
 
-To install conda, read on!
+You'll need to install conda first, however.
 
-Following instructions [here](https://docs.conda.io/en/latest/miniconda.html),
-do:
+Run the following:
 
 ```
 echo source ~/.bashrc >> ~/.bash_profile
-curl -LO https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-bash Miniconda3-latest-Linux-x86_64.sh
+curl -LO https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-Linux-x86_64.sh
+bash Mambaforge-Linux-x86_64.sh 
 ```
 and then answer yes to all the questions!
 
-Log out and log back in again to activate the base conda environment. If this does not work, run:
+Log out and log back in again to activate the base conda environment. You
+should now have a prompt that starts with `(base) `.
 
-```
-source ~/.bashrc
-```
-
-Then set up bioconda ([see docs for more info](https://bioconda.github.io/user/install.html#set-up-channels)):
+Lastly but not leastly, set up bioconda ([see docs for more info](https://bioconda.github.io/user/install.html#set-up-channels)):
 
 ```
 conda config --add channels defaults
