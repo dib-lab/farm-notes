@@ -1,12 +1,17 @@
 ---
 tags: farm, rstudio
 ---
+
 [toc]
 
-# Running rstudio server on farm - June 17, 2023
+# Running rstudio server on farm - June 19, 2023
 
 Titus Brown, ctbrown@ucdavis.edu
-June 17, 2023
+
+June 19, 2023
+
+
+To edit: [![hackmd-github-sync-badge](https://hackmd.io/ocS5H5CnTAm_EWugvYF_Mw/badge)](https://hackmd.io/ocS5H5CnTAm_EWugvYF_Mw) / [latest on github](https://github.com/dib-lab/farm-notes/blob/latest/rstudio-on-farm.md)
 
 ## Log into farm
 
@@ -83,10 +88,11 @@ Note: `rstudio-launch` is what is running RStudio Server! If it exits (because s
 
 Create a new ssh connection into farm; on Mac OS and Linux computers, you can create a new terminal on your desktop/laptop computer and copy/paste from the instructions printed out by `rstudio-launch` above.
 
-For example, you will want to run
+For example, you will want to run something like:
 ```
 ssh -L35181:cpu-3-51:35181 xyz@farm.hpc.ucdavis.edu
 ```
+in a new window on your Mac OS X/Linux laptop/desktop
 
 On Windows it's slightly trickier and depends on what software you are running.
 
