@@ -10,6 +10,8 @@ Titus Brown, ctbrown@ucdavis.edu
 
 June 19, 2023
 
+To edit: [![hackmd-github-sync-badge](https://hackmd.io/9Uk2wAOiQs6hnnaV_39DtQ/badge)](https://hackmd.io/9Uk2wAOiQs6hnnaV_39DtQ) / [latest on github](https://github.com/dib-lab/farm-notes/blob/latest/jupyter-on-farm.md)
+
 (Adapted from [Nick Ulle's tutorial!](https://nick-ulle.github.io/bag-of-tricks/chapters/remote-computing.html#running-jupyter-rstudio-remotely))
 
 ## Instructions
