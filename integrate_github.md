@@ -50,7 +50,7 @@ The key's randomart image is:
 +----[SHA256]-----+
 ```
 
-Great! Now you have a private and public SSH key in you `.ssh` directory on Farm. You can see these files with the following command:
+Great! Now you have a private and public SSH key in your `.ssh` directory on Farm. You can see these files with the following command:
 
 ```
 ls .ssh
@@ -110,7 +110,7 @@ For further reading on the subject of SSH key generation, and Github SSH key set
 
 # Deprecated credential integration, kept for posterity?
 
-This section will go through how to integrate your GitHub username and password with the Farm (so you don't have to type them in everytime you `push` to github). This material is taken from [this stackoverflow  page](https://stackoverflow.com/questions/35942754/how-to-save-username-and-password-in-git-gitextension) and [this Git page](https://git-scm.com/docs/git-credential-store).
+This section will go through how to integrate your GitHub username and password with the Farm (so you don't have to type them in every time you `push` to github). This material is taken from [this stackoverflow  page](https://stackoverflow.com/questions/35942754/how-to-save-username-and-password-in-git-gitextension) and [this Git page](https://git-scm.com/docs/git-credential-store).
 
 
 ## Step 1: Store Credentials 
