@@ -15,6 +15,8 @@
 
 [Using Snakemake](snakemake-slurm.md)
 
+[Using Snakemake profiles](snakemake_profiles.md)
+
 [Magic commands and informative links](magic-commands.md)
 
 The appropriate help mailing list is farm-hpc@ucdavis.edu - the list
