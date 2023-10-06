@@ -21,6 +21,7 @@ mkdir -p $MYTMP
 # force clean it up after job script ends
 function cleanup() { rm -rf $MYTMP; }
 trap cleanup EXIT
+trap cleanup USR1
 
 # change to it!
 cd $MYTMP
