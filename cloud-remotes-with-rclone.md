@@ -388,3 +388,10 @@ Copy everything in a single directory:
 $ rclone copy 'dropbox:serena-test' ~/single-cell/
 ```
 > This will only copy files that are not already in `~/single-cell`.
+
+## Resources
+
+1. [Rclone blog on dropbox](https://rclone.org/dropbox/)
+2. [Rclone blog on remote machines](https://rclone.org/remote_setup/)
+3. [Rclone wiki](https://en.wikipedia.org/wiki/Rclone)
+4. [A university's blog on remote computer rclone usage](https://www.carc.usc.edu/user-information/user-guides/data-management/transferring-files-rclone)
