@@ -50,31 +50,15 @@ srun -p high2 -t 24:00:00 --mem=20000 --pty bash
 ```
 (We strongly suggest _against_ doing this regularly, and instead suggest using `sbatch` to submit scripts that run your analysis; see "Running software via the slurm queuing system" below, for more on the suggested approach.)
 
-## Installing conda
+## Using conda to install software
 
 We recommend managing most of your software installs via conda and bioconda. Please see [this tutorial on conda](https://ngs-docs.github.io/2021-august-remote-computing/installing-software-on-remote-computers-with-conda.html) for a more complete introduction!
 
-You'll need to install conda first, however.
-
-Run the following:
-
+The conda system comes pre-installed on farm. To load it, use:
 ```
-echo source ~/.bashrc >> ~/.bash_profile
-curl -LO https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-Linux-x86_64.sh
-bash Mambaforge-Linux-x86_64.sh 
+module load conda
 ```
-and then answer yes to all the questions!
-
-Log out and log back in again to activate the base conda environment. You
-should now have a prompt that starts with `(base) `.
-
-Lastly but not leastly, set up bioconda ([see docs for more info](https://bioconda.github.io/user/install.html#set-up-channels)):
-
-```
-conda config --add channels defaults
-conda config --add channels bioconda
-conda config --add channels conda-forge
-```
+This will enable the 'conda' and 'mamba' commands.
 
 Now you can use `conda install -y <packagename>` to install stuff.
 
